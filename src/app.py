@@ -1,6 +1,6 @@
 import os
 from flask import Flask, request, jsonify
-from agents import run_analysis
+from src.agents import run_analysis
 
 # Global app object — Render ke liye zaroori
 app = Flask(__name__)
