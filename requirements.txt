@@ -1,4 +1,3 @@
-.env
 flask 
 tavily-python 
 python-dotenv
