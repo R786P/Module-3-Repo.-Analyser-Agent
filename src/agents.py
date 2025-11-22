@@ -1,4 +1,4 @@
-src/agents.pyimport os
+import os
 from tools.tavily_search import TavilySearchResults
 
 def run_analysis(repo_url: str, mode: str) -> str:
@@ -11,7 +11,6 @@ def run_analysis(repo_url: str, mode: str) -> str:
 
     try:
         results = TavilySearchResults(query)
-        # Return top result snippet
         if results:
             return results[0].get('content', 'No content found.')[:1000] + "..."
         else:
