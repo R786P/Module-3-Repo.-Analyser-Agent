@@ -1,4 +1,4 @@
-flask==3.0.3
-tavily-python==0.5.0
+flask 
+tavily-python 
 python-dotenv
-gunicorn==21.2.0
+gunicorn
