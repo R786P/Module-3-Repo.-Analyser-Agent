@@ -2,6 +2,7 @@ import os
 from flask import Flask, request, jsonify
 from agents import run_analysis
 
+# Global app object — Render ke liye zaroori
 app = Flask(__name__)
 
 @app.route('/')
@@ -24,6 +25,7 @@ def analyze():
     except Exception as e:
         return jsonify({"error": str(e)}), 500
 
-if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 5000))
-    app.run(host="0.0.0.0", port=port)
+# Render ke liye — ye block remove karo ya comment karo
+# if __name__ == "__main__":
+#     port = int(os.environ.get("PORT", 5000))
+#     app.run(host="0.0.0.0", port=port)
