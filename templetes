@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GitHub AI Analyzer</title>
+  <style>
+    body { font-family: sans-serif; padding: 20px; }
+    input, select, button { width: 100%; padding: 10px; margin: 5px 0; }
+    #result { margin-top: 20px; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <h2>GitHub Repo Analyzer</h2>
+  <input type="text" id="repoUrl" placeholder="https://module-3-repo-analyser-agent.onrender.com" />
+  <select id="mode">
+    <option value="codebase_summary">Codebase Summary</option>
+    <option value="security_check">Security Check</option>
+  </select>
+  <button onclick="analyze()">Analyze</button>
+  <div id="result"></div>
+
+  <script>
+    async function analyze() {
+      const repoUrl = document.getElementById('repoUrl').value;
+      const mode = document.getElementById('mode').value;
+      const resultDiv = document.getElementById('result');
+      
+      resultDiv.innerText = "Analyzing...";
+
+      try {
+        const res = await fetch("https://your-render-app-url.onrender.com/analyze", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ repoUrl, mode })
+        });
+        const data = await res.json();
+        resultDiv.innerText = data.result || data.error || "No result";
+      } catch (e) {
+        resultDiv.innerText = "Error: " + e.message;
+      }
+    }
+  </script>
+</body>
+</html>
