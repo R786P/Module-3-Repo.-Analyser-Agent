@@ -1,13 +1,16 @@
-from flask import Flask, request, jsonify
-from flask_cors import CORS  # <-- new line
+from flask import Flask, request, jsonify, send_from_directory
+from flask_cors import CORS
 from agents import run_analysis
+import os
 
-app = Flask(__name__)
-CORS(app)  # <-- new line - enables CORS for all routes
+app = Flask(__name__, static_folder=".")
+
+CORS(app)
 
 @app.route('/')
 def home():
-    return "GitHub AI Agent Backend is running!"
+    # Serve the frontend - index.html
+    return send_from_directory('.', 'index.html')
 
 @app.route('/analyze', methods=['POST'])
 def analyze():
