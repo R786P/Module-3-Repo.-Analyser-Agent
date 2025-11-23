@@ -29,7 +29,7 @@
       resultDiv.innerText = "Analyzing...";
 
       try {
-        const res = await fetch("https://your-render-app-url.onrender.com/analyze", {
+        const res = await fetch ("https://module-3-repo-analyser-agent.onrender.com",{
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ repoUrl, mode })
